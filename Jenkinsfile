@@ -3,11 +3,6 @@ pipeline{
     label 'agent'
    }
    stages{
-    stage('git pull'){
-        steps{
-            git 'https://github.com/monicatvera/2048'
-        }
-    }
     stage('install dependencies'){
         steps{
             sh 'npm install'
