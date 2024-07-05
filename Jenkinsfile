@@ -2,7 +2,7 @@ pipeline{
     agent {
         docker {
             image 'node:lts-iron'
-        
+            label 'docker_agent'
         }
     }
    stages{
