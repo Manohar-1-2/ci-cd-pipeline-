@@ -1,7 +1,10 @@
 pipeline{
-   agent {
-    label 'agent'
-   }
+    agent {
+        docker {
+            image 'node:lts-iron'
+            label 'docker_agent'
+        }
+    }
    stages{
     stage('install dependencies'){
         steps{
