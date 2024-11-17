@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/Manohar-1-2/ci-cd-pipeline-.git'   # Replace with your Git repository URL
+    targetRevision: HEAD   # You can specify a branch, tag, or commit hash (e.g., "main" or "v1.0.0")
+    path: manifests   # Path to the Kubernetes manifests within your repository
+  destination:
+    server: 'https://kubernetes.default.svc'   # Default Kubernetes cluster
+    namespace: default   # The Kubernetes namespace where the app will be deployed
+  syncPolicy:
+    automated:
+      prune: true  # Automatically delete resources that are no longer in the Git repo
+      selfHeal: true  # Automatically sync the application if the state diverges
